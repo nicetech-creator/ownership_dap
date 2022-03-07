@@ -27,9 +27,9 @@ const Step2 = ({
         pay gas again to revoke access and assign a new proxy wallet to your
         tokens. But at least that's better than losing your tokens!
       </p>
-      <input type="text" placeholder='Proxy Wallet Address' defaultValue={walletAddress}/>
-      <textarea rows={3} placeholder="Mnemonic" defaultValue={mnemonic} />
-      <button onClick={generateNewWallet}>Generate Wallet</button>
+      <input className='cInput w-100 mb-4' type="text" placeholder='Proxy Wallet Address' defaultValue={walletAddress}/>
+      <textarea className='cInput w-100 mb-4' rows={3} placeholder="Mnemonic" defaultValue={mnemonic} />
+      <button onClick={generateNewWallet} className='startedBtn'>Generate Wallet</button>
     </>
   )
 }

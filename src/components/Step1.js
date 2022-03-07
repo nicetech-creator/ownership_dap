@@ -65,7 +65,7 @@ const Step1 = ({}) => {
                 <div className="switch ml-auto">
                   <div>
                     <input type="checkbox" id="toggle2"/>
-                    <label for="toggle2"></label>
+                    <label className="checkbox" for="toggle2"></label>
                   </div>
                   <h3>
                     <span className={`walletTxt`}>

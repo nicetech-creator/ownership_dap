@@ -225,7 +225,7 @@ const Home = () => {
         <div className="switch">
           <div>
             <input type="checkbox" id="toggle" onClick={slideIn} />
-            <label for="toggle"></label>
+            <label className="checkbox" for="toggle"></label>
           </div>
           <h3>
             <span className={`walletTxt ${card ? "gradient" : ""}`}>
@@ -342,7 +342,7 @@ const Home = () => {
       {/* slideIn section */}
 
       <section className={`row slider ${translate ? "comeIn" : ""} `}>
-        <div className="blur col-lg-6">
+        <div className="blur col-lg-6" onClick={back}>
           <div className={`dev dev2 ${show ? "d-none" : ""}`}>
             <div className="ml-4 ">
               <h4>Did you Know?</h4>
