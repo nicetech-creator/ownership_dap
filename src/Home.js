@@ -9,10 +9,18 @@ import { connectorsByName } from "./utils/web3React";
 import { activeteWallet } from './utils/wallet';
 import { useNFTsForAddress } from './hooks/useMorellis';
 
+import Step1 from './components/Step1';
+import Step2 from './components/Step2';
+import Step3 from './components/Step3';
+
 const Home = () => {
   const [card, setcard] = useState(false);
   const [translate, settranslate] = useState(false);
   const [show, setshow] = useState(false);
+  const [step, setStep] = useState(1);
+
+  const [walletAddress, setWalletAddress] = useState("")
+  const [mnemonic, setMnemonic] = useState("")
 
   const {
     activate,
@@ -52,6 +60,41 @@ const Home = () => {
     }
 
   };
+
+  const renderStep = () => {
+    switch(step) {
+      case 1:
+        return <Step1 />
+      case 2:
+        return (
+          <Step2
+            walletAddress={walletAddress}
+            mnemonic={mnemonic}
+            setWalletAddress={setWalletAddress} 
+            setMnemonic={setMnemonic}
+          />
+        ) 
+      case 3:
+        return (
+          <Step3
+            proxyAddress={walletAddress}
+          />
+        )
+      default:
+        return <Step1/>
+    }
+  }
+
+  const nextStep = () => {
+    if (step < 3) setStep(step + 1)
+  }
+
+  const prevStep = () => {
+    if (step > 1) setStep(step - 1)
+    else {
+      back();
+    }
+  }
 
   return (
     <>
@@ -336,54 +379,12 @@ const Home = () => {
             </div>
           </div>
           <div className="margin">
-            <p className="step">Step 01</p>
-            <h1>Connect Wallet</h1>
-            <p className="para">
-              First we need to connect your ownership wallet that contains your
-              tokens. We need this to create a contract in the blockchain that
-              points to your proxy wallet. This is a one-off to create the proxy
-              wallet. Once you have done this, you won't have to use your
-              valuable ownership wallet for supported projects.
-            </p>
-            {
-              account? 
-                <>
-                  <div>
-                    <div className="gradient">
-                      <p className="para">{account}</p>
-                      <p>Metamask</p>
-                    </div>
-                    <button className="startedBtn">Disconnect Wallet</button>
-                  </div>
-                  <div>
-                    <p className="para">
-                      This wallet contains {nfts.length} sets of tokens:
-                    </p>
-                    <div className='row justify-content-start'>
-                      {nfts.map((n, idx) => {
-                        return (
-                          <div key={idx} className="col-lg-3">
-                            <p>Icon</p>
-                          </div>
-                        )
-                      })}
-                      <label>
-                        <input
-                          type="checkbox"
-                        />
-                        Proxy All Tokens
-                      </label>
-                    </div>
-                  </div>
-                </>
-                 : 
-                <button className="startedBtn" onClick={() => {console.log('clicked'); activeteWallet(activate)}}>Connect Wallet</button>
-            }
+            { renderStep() }
             
             <div className="prev_next">
 
-              <button className="back" onClick={back}> <i className="mr-3 fa fa-arrow-left" aria-hidden="true"></i>Back</button>
-              <button className="Next">Next <i className="fa fa-arrow-right ml-3" aria-hidden="true"></i></button>
+              <button className="back" onClick={prevStep}> <i className="mr-3 fa fa-arrow-left" aria-hidden="true"></i>Back</button>
+              <button className="Next" onClick={nextStep}>Next <i className="fa fa-arrow-right ml-3" aria-hidden="true"></i></button>
 
             </div>
           </div>
