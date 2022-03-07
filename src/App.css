@@ -101,6 +101,22 @@ button:focus {
   font-family: var(--clash-display-font);
 }
 
+.walletinfo {
+  background-image: var(--gradient-rainbow);
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+}
+
+.disableBtn {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #6B788E;
+  border-color: rgba(228, 231, 236, 1);
+  border-style: solid;
+}
 .walletTxt {
   font-family: var(--clash-display-font);
   color: #42526d;

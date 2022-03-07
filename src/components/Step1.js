@@ -11,9 +11,10 @@ import { useNFTsForAddress } from '../hooks/useMorellis';
 
 const Step1 = ({}) => {
   const {
+    account, 
+    chainId,
     activate,
   } = useWeb3React();
-  const { account, chainId } = useWeb3React()
   const [nfts, setNFTs] = useNFTsForAddress();
   return (
     <>
@@ -30,30 +31,48 @@ const Step1 = ({}) => {
         account? 
           <>
             <div>
-              <div className="gradient">
-                <p className="para">{account}</p>
-                <p>Metamask</p>
+              <div className="walletinfo d-flex">
+                <div className="listContent">
+                  <img
+                    className="logoimg"
+                    src={process.env.PUBLIC_URL + "/Images/listImg1.png"}
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <p className="para t-white">{account}</p>
+                  <p>Metamask</p>
+                </div>
               </div>
-              <button className="startedBtn">Disconnect Wallet</button>
+              <button className="disableBtn w-100 mt-4">Disconnect Wallet</button>
             </div>
             <div>
               <p className="para">
                 This wallet contains {nfts.length} sets of tokens:
               </p>
-              <div className='row justify-content-start'>
+              <div className="lists">
                 {nfts.map((n, idx) => {
                   return (
-                    <div key={idx} className="col-lg-3">
-                      <p>Icon</p>
+                    <div className="listContent">
+                      <img
+                        className="logoimg"
+                        src={process.env.PUBLIC_URL + "/Images/listImg1.png"}
+                        alt=""
+                      />
                     </div>
                   )
                 })}
-                <label className='ml-auto'>
-                  <input
-                    type="checkbox"
-                  />
-                  Proxy All Tokens
-                </label>
+                <div className="switch ml-auto">
+                  <div>
+                    <input type="checkbox" id="toggle2"/>
+                    <label for="toggle2"></label>
+                  </div>
+                  <h3>
+                    <span className={`walletTxt`}>
+                      Proxy All Tokens
+                    </span>
+                  </h3>
+                </div>
               </div>
             </div>
           </>
