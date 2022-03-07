@@ -78,6 +78,7 @@ const Home = () => {
         return (
           <Step3
             proxyAddress={walletAddress}
+            nfts={nfts}
           />
         )
       default:

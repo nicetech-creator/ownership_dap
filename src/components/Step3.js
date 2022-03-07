@@ -4,6 +4,7 @@ import {
   useWeb3React,
   UnsupportedChainIdError,
 } from "@web3-react/core";
+import { NotificationManager } from 'react-notifications';
 
 import { useContract } from "../hooks/contractCore"
 
@@ -11,7 +12,8 @@ import {ADDRESSES} from "../utils/constants"
 import UserShipABI from "../utils/abis/usership.json"
 
 const Step3 = ({
-  proxyAddress
+  proxyAddress,
+  nfts
 }) => {
   const { account, chainId } = useWeb3React()
 
@@ -22,14 +24,14 @@ const Step3 = ({
 
   const onSign = async () => {
     try {
-      let tx = await useshipCtr.setUsership(true, proxyAddress, []);
-      // NotificationManager.success('Transaction Pending', tx.hash);
+      let tx = await useshipCtr.setUsership(true, proxyAddress, nfts);
+      NotificationManager.success('Transaction Pending', tx.hash);
       await tx.wait();
-      // NotificationManager.success('Transaction Confirmed', tx.hash);
+      NotificationManager.success('Transaction Confirmed', tx.hash);
     } catch (error) {
-      // NotificationManager.error('Error message', error, 5000, () => {
-      //   alert('callback');
-      // });
+      NotificationManager.error('Error message', error, 5000, () => {
+        alert('callback');
+      });
     } 
   }
 
