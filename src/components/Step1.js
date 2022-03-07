@@ -31,7 +31,7 @@ const Step1 = ({}) => {
         account? 
           <>
             <div>
-              <div className="walletinfo d-flex">
+              <div className="walletinfo d-flex align-items-center">
                 <div className="listContent">
                   <img
                     className="logoimg"
@@ -39,9 +39,9 @@ const Step1 = ({}) => {
                     alt=""
                   />
                 </div>
-                <div>
-                  <p className="para t-white">{account}</p>
-                  <p>Metamask</p>
+                <div style={{'padding-left': '2rem'}}>
+                  <p className="para mb-0 t-white">{account}</p>
+                  <p className="para">Metamask</p>
                 </div>
               </div>
               <button className="disableBtn w-100 mt-4">Disconnect Wallet</button>
@@ -50,7 +50,7 @@ const Step1 = ({}) => {
               <p className="para">
                 This wallet contains {nfts.length} sets of tokens:
               </p>
-              <div className="lists">
+              <div className="lists w-100">
                 {nfts.map((n, idx) => {
                   return (
                     <div className="listContent">

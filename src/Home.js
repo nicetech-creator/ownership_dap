@@ -166,7 +166,7 @@ const Home = () => {
       {/* List Section  */}
 
       <section className="listParent">
-        <div className="lists">
+        <div className="lists w-75">
           <div className="listContent">
             <img
               className="logoimg"
