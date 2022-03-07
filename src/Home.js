@@ -1,9 +1,24 @@
 import React, { useState } from "react";
+import {
+  Web3ReactProvider,
+  useWeb3React,
+  UnsupportedChainIdError,
+} from "@web3-react/core";
+
+import { connectorsByName } from "./utils/web3React";
+import { activeteWallet } from './utils/wallet';
+import { useNFTsForAddress } from './hooks/useMorellis';
 
 const Home = () => {
   const [card, setcard] = useState(false);
   const [translate, settranslate] = useState(false);
   const [show, setshow] = useState(false);
+
+  const {
+    activate,
+  } = useWeb3React();
+  const { account, chainId } = useWeb3React()
+  const [nfts, setNFTs] = useNFTsForAddress();
 
   const slideIn = () => {
 
@@ -330,7 +345,41 @@ const Home = () => {
               wallet. Once you have done this, you won't have to use your
               valuable ownership wallet for supported projects.
             </p>
-            <button className="startedBtn">Connect Wallet</button>
+            {
+              account? 
+                <>
+                  <div>
+                    <div className="gradient">
+                      <p className="para">{account}</p>
+                      <p>Metamask</p>
+                    </div>
+                    <button className="startedBtn">Disconnect Wallet</button>
+                  </div>
+                  <div>
+                    <p className="para">
+                      This wallet contains {nfts.length} sets of tokens:
+                    </p>
+                    <div className='row justify-content-start'>
+                      {nfts.map((n, idx) => {
+                        return (
+                          <div key={idx} className="col-lg-3">
+                            <p>Icon</p>
+                          </div>
+                        )
+                      })}
+                      <label>
+                        <input
+                          type="checkbox"
+                        />
+                        Proxy All Tokens
+                      </label>
+                    </div>
+                  </div>
+                </>
+                 : 
+                <button className="startedBtn" onClick={() => {console.log('clicked'); activeteWallet(activate)}}>Connect Wallet</button>
+            }
+            
             <div className="prev_next">
 
               <button className="back" onClick={back}> <i className="mr-3 fa fa-arrow-left" aria-hidden="true"></i>Back</button>
