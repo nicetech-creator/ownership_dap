@@ -235,8 +235,8 @@ const Home = () => {
           </h3>
         </div>
         <p className="para">
-          With proxy your wallet never interacts with the website, <br /> we
-          just point them to the location where your assets are stored
+          With 0xProxy your valuable wallet never actually interacts with the website, <br/> 
+          they can just view the location where your assets are stored which is sufficient to verify ownership.
         </p>
 
         <div className="cards">
@@ -307,7 +307,7 @@ const Home = () => {
       <footer>
         <div className="needDiv">
           <h1 className="need">What you’ll need</h1>
-          <button className="footerbtn">Get Started</button>
+          <button className="footerbtn" onClick={start}>Get Started</button>
         </div>
         <div>
           <div className="faq">
