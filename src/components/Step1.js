@@ -21,11 +21,9 @@ const Step1 = ({}) => {
       <p className="step">Step 01</p>
       <h1>Connect Wallet</h1>
       <p className="para">
-        First we need to connect your ownership wallet that contains your
-        tokens. We need this to create a contract in the blockchain that
-        points to your proxy wallet. This is a one-off to create the proxy
-        wallet. Once you have done this, you won't have to use your
-        valuable ownership wallet for supported projects.
+        Let's connect your ownership wallet that contains your tokens. 
+        Make sure that your wallet is active on the blockchain 
+        that you want to use (For example, Ethereum).
       </p>
       {
         account? 

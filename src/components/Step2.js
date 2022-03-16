@@ -10,8 +10,9 @@ const Step2 = ({
 }) => {
   const generateNewWallet = () => {
     const newWallet = ethers.Wallet.createRandom()
+    console.log('newWalelt: ', newWallet)
     setWalletAddress(newWallet.address)
-    setMnemonic(newWallet.mnemonic.phrase)
+    setMnemonic(newWallet.privateKey)
   }
 
   return (
@@ -28,7 +29,7 @@ const Step2 = ({
         tokens. But at least that's better than losing your tokens!
       </p>
       <input className='cInput w-100 mb-4' type="text" placeholder='Proxy Wallet Address' defaultValue={walletAddress}/>
-      <textarea className='cInput w-100 mb-4' rows={3} placeholder="Mnemonic" defaultValue={mnemonic} />
+      <textarea className='cInput w-100 mb-4' rows={3} placeholder="Private Key" defaultValue={mnemonic} />
       <button onClick={generateNewWallet} className='startedBtn'>Generate Wallet</button>
     </>
   )

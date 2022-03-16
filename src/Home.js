@@ -344,7 +344,7 @@ const Home = () => {
 
       <section className={`row slider ${translate ? "comeIn" : ""} `}>
         <div className="blur col-lg-6" onClick={back}>
-          <div className={`dev dev2 ${show ? "d-none" : ""}`}>
+          <div className={`dev dev2`}>
             <div className="ml-4 ">
               <h4>Did you Know?</h4>
               <h5>

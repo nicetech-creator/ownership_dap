@@ -16,6 +16,7 @@ const Step3 = ({
   nfts
 }) => {
   const { account, chainId } = useWeb3React()
+  const [title, setTitle] = useState("Your Wallets");
 
   const useshipCtr = useContract({
     abi: UserShipABI,
@@ -28,6 +29,7 @@ const Step3 = ({
       NotificationManager.success('Transaction Pending', tx.hash);
       await tx.wait();
       NotificationManager.success('Transaction Confirmed', tx.hash);
+      setTitle('Success!')
     } catch (error) {
       NotificationManager.error('Error message', error, 5000, () => {
         alert('callback');
@@ -38,12 +40,9 @@ const Step3 = ({
   return (
     <>
       <p className="step">Step 03</p>
-      <h1>Success!</h1>
+      <h1>{title}</h1>
       <p className="para">
-        Your proxy wallet is created. You can now use this wallet to connect 
-        to supported projects without needing to touch your ownership wallet. 
-        If a project does not support proxy, but you think they should, please 
-        let them know. Integrating our platform takes just a few lines of code.
+        Check the details below are correct before signing the contract
       </p>
       <div className="form-group">
         <label for="ownerAddress">Ownership Wallet</label>
@@ -53,7 +52,7 @@ const Step3 = ({
         <label for="proxyAddress">Proxy Wallet</label>
         <input className='cInput w-100 mb-4' id="proxyAddress" type="text" placeholder='Proxy Wallet Address' defaultValue={proxyAddress}/>
         <p className="para">
-          Your proxy wallet points to the address 0x2345u23bjh243jh52345 and has permission to access all tokens.
+          Use the inputted wallet address instead of {account}.
         </p>
       </div>
       <button onClick={onSign} className='startedBtn'>Sign</button>
