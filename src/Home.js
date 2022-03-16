@@ -12,12 +12,14 @@ import { useNFTsForAddress } from './hooks/useMorellis';
 import Step1 from './components/Step1';
 import Step2 from './components/Step2';
 import Step3 from './components/Step3';
+import Progressbar from "./components/Progressbar";
 
 const Home = () => {
   const [card, setcard] = useState(false);
   const [translate, settranslate] = useState(false);
   const [show, setshow] = useState(false);
   const [step, setStep] = useState(1);
+  const [completedStep, setCompletedStep] = useState(0);
 
   const [walletAddress, setWalletAddress] = useState("")
   const [mnemonic, setMnemonic] = useState("")
@@ -64,7 +66,9 @@ const Home = () => {
   const renderStep = () => {
     switch(step) {
       case 1:
-        return <Step1 />
+        return <Step1 
+          setCompletedStep={setCompletedStep}
+        />
       case 2:
         return (
           <Step2
@@ -72,6 +76,7 @@ const Home = () => {
             mnemonic={mnemonic}
             setWalletAddress={setWalletAddress} 
             setMnemonic={setMnemonic}
+            setCompletedStep={setCompletedStep}
           />
         ) 
       case 3:
@@ -79,6 +84,7 @@ const Home = () => {
           <Step3
             proxyAddress={walletAddress}
             nfts={nfts}
+            setCompletedStep={setCompletedStep}
           />
         )
       default:
@@ -369,16 +375,7 @@ const Home = () => {
         </div>
 
         <div className="connectDiv col-lg-6 col-12">
-          <div className="bar">
-            {/* <img src={process.env.PUBLIC_URL + "/Images/bar.svg"} alt="" /> */}
-            <div className="w-100">
-              <ul className="progressbar">
-                <li className="active"></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
+          <Progressbar completedStep={completedStep}/>
           <div className="margin">
             { renderStep() }
             

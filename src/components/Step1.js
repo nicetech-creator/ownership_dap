@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Web3ReactProvider,
   useWeb3React,
@@ -9,13 +9,20 @@ import { connectorsByName } from "../utils/web3React";
 import { activeteWallet } from '../utils/wallet';
 import { useNFTsForAddress } from '../hooks/useMorellis';
 
-const Step1 = ({}) => {
+const Step1 = ({setCompletedStep}) => {
   const {
     account, 
     chainId,
     activate,
   } = useWeb3React();
   const [nfts, setNFTs] = useNFTsForAddress();
+
+  useEffect(() => {
+    if (account) {
+      setCompletedStep(1);
+    }
+  }, [account]);
+
   return (
     <>
       <p className="step">Step 01</p>

@@ -13,7 +13,8 @@ import UserShipABI from "../utils/abis/usership.json"
 
 const Step3 = ({
   proxyAddress,
-  nfts
+  nfts,
+  setCompletedStep
 }) => {
   const { account, chainId } = useWeb3React()
   const [title, setTitle] = useState("Your Wallets");
@@ -30,6 +31,7 @@ const Step3 = ({
       await tx.wait();
       NotificationManager.success('Transaction Confirmed', tx.hash);
       setTitle('Success!')
+      setCompletedStep(3)
     } catch (error) {
       NotificationManager.error('Error message', error, 5000, () => {
         alert('callback');

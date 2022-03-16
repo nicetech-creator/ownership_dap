@@ -6,13 +6,15 @@ const Step2 = ({
   walletAddress,
   mnemonic,
   setWalletAddress,
-  setMnemonic
+  setMnemonic,
+  setCompletedStep
 }) => {
   const generateNewWallet = () => {
     const newWallet = ethers.Wallet.createRandom()
     console.log('newWalelt: ', newWallet)
     setWalletAddress(newWallet.address)
     setMnemonic(newWallet.privateKey)
+    setCompletedStep(2);
   }
 
   return (
