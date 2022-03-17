@@ -14,6 +14,7 @@ const Step1 = ({setCompletedStep}) => {
     account, 
     chainId,
     activate,
+    deactivate
   } = useWeb3React();
   const [nfts, setNFTs] = useNFTsForAddress();
 
@@ -49,7 +50,7 @@ const Step1 = ({setCompletedStep}) => {
                   <p className="para">Metamask</p>
                 </div>
               </div>
-              <button className="disableBtn w-100 mt-4">Disconnect Wallet</button>
+              <button className="disableBtn w-100 mt-4" onClick={deactivate}>Disconnect Wallet</button>
             </div>
             <div>
               <p className="para">

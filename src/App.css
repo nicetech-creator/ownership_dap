@@ -116,6 +116,7 @@ button:focus {
   color: #6B788E;
   border-color: rgba(228, 231, 236, 1);
   border-style: solid;
+  cursor: pointer;
 }
 .walletTxt {
   font-family: var(--clash-display-font);
