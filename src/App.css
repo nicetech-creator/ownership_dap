@@ -543,9 +543,13 @@ footer {
   display: inline-block;
   border: 0;
   background: transparent;
-  color: #c2c7d0;
+  color: #06152f;
   font-size: 2rem;
   cursor: pointer;
+}
+
+.prev_next button:disabled {
+  color: #c2c7d0;
 }
 
 section.footer {

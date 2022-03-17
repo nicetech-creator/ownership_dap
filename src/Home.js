@@ -382,7 +382,7 @@ const Home = () => {
             <div className="prev_next">
 
               <button className="back" onClick={prevStep}> <i className="mr-3 fa fa-arrow-left" aria-hidden="true"></i>Back</button>
-              <button className="Next" onClick={nextStep}>Next <i className="fa fa-arrow-right ml-3" aria-hidden="true"></i></button>
+              <button className="Next" onClick={nextStep} disabled={completedStep < step}>Next <i className="fa fa-arrow-right ml-3" aria-hidden="true"></i></button>
 
             </div>
           </div>
