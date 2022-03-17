@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Children} from 'react';
 import {
   Web3ReactProvider,
   useWeb3React,
@@ -17,12 +17,31 @@ const Step1 = ({setCompletedStep}) => {
     deactivate
   } = useWeb3React();
   const [nfts, setNFTs] = useNFTsForAddress();
+  const [chainIcon, setChainIcon] = useState(process.env.PUBLIC_URL + "/Images/listImg1.png")
+
+  console.log('chain id: ', chainId, typeof chainId)
 
   useEffect(() => {
     if (account) {
       setCompletedStep(1);
     }
   }, [account]);
+
+  useEffect(() => {
+    if (chainId) {
+      switch(chainId) {
+        case 1:
+          setChainIcon(process.env.PUBLIC_URL + "/Images/listImg1.png")
+          break;
+        case 56:
+          setChainIcon(process.env.PUBLIC_URL + "/Images/listImg3.png")
+          break;
+        case 97:
+          setChainIcon(process.env.PUBLIC_URL + "/Images/listImg3.png")
+          break;
+      }
+    }
+  }, [chainId])
 
   return (
     <>
@@ -41,7 +60,7 @@ const Step1 = ({setCompletedStep}) => {
                 <div className="listContent">
                   <img
                     className="logoimg"
-                    src={process.env.PUBLIC_URL + "/Images/listImg1.png"}
+                    src={chainIcon}
                     alt=""
                   />
                 </div>
@@ -62,7 +81,7 @@ const Step1 = ({setCompletedStep}) => {
                     <div className="listContent">
                       <img
                         className="logoimg"
-                        src={process.env.PUBLIC_URL + "/Images/listImg1.png"}
+                        src={chainIcon}
                         alt=""
                       />
                     </div>
