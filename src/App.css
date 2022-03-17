@@ -553,9 +553,9 @@ section.footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10rem;
   color: #6a7382;
   flex-direction: column;
+  padding: 2rem 4rem;
 }
 
 /* Responsiveness  */

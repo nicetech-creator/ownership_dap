@@ -393,7 +393,7 @@ const Home = () => {
         <div className="my-3">
           <img
             className="logoimg"
-            src={process.env.PUBLIC_URL + "/Images/logo2.svg"}
+            src={process.env.PUBLIC_URL + "/Images/gradient-dark.svg"}
             alt=""
           />
         </div>
