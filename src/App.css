@@ -732,7 +732,7 @@ section.footer {
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
-.progressbar li.active + li:after {
+.progressbar li.passed + li:after {
   background: var(--gradient-rainbow);
 }
 

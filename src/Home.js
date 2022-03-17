@@ -375,7 +375,7 @@ const Home = () => {
         </div>
 
         <div className="connectDiv col-lg-6 col-12">
-          <Progressbar completedStep={completedStep}/>
+          <Progressbar completedStep={completedStep} currentStep={step}/>
           <div className="margin">
             { renderStep() }
             
